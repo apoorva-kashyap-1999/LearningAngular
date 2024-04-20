@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Room , RoomData } from './rooms';
 
 @Component({
@@ -6,12 +6,12 @@ import { Room , RoomData } from './rooms';
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnInit {
 
   hotelName='Taj Hotel'
   noOfRooms=20
   hideRooms= false
-e: any;
+  e: any;
 
   toggle(){
     this.hideRooms = !this.hideRooms;
@@ -22,19 +22,22 @@ e: any;
      availableRooms : 8,
      bookedRooms : 12
   }
+  roomsList : RoomData[]=[];
+  constructor(){ }
 
-  roomsList : RoomData[] = [{
-   roomType:"Deluxe",
-   amenities:"AC",
-   price:2000,
-   checkIn:new Date()
-  },{
-    roomType:"Suite",
-    amenities:"Jacuzi",
-    price:5000,
-    checkIn:new Date()
-  }]
-
+  ngOnInit(): void { 
+    this.roomsList = [{
+      roomType:"Deluxe",
+      amenities:"AC",
+      price:2000,
+      checkIn:new Date()
+     },{
+       roomType:"Suite",
+       amenities:"Jacuzi",
+       price:5000,
+       checkIn:new Date()
+     }]
+   }
 }
 
 
