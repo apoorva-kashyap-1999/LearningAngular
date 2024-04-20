@@ -1,0 +1,28 @@
+<p>rooms-list works!</p>
+<!-- ngFor -->
+<div>
+    <table style="padding: 17px; margin: 12px">
+      <thead>
+        <tr style="padding: 12px; margin: 15px">
+          <th style="padding: 12px; margin: 15px">Index</th>
+          <th style="padding: 12px; margin: 15px">Even/Odd</th>
+          <th style="padding: 12px; margin: 15px">Room Type</th>
+          <th style="padding: 12px; margin: 15px">Amenities</th>
+          <th style="padding: 12px; margin: 15px">Price</th>
+          <th style="padding: 12px; margin: 15px">Check-In</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+        [ngClass]="e ?'even' :'odd' "
+         *ngFor="let room of rooms; let e=even; let o=odd; let i=index">
+         <td style="padding: 12px; margin: 15px">{{i}}</td>
+         <td style="padding: 12px; margin: 15px">{{e ? "Even":"Odd"}}</td>
+          <td style="padding: 12px; margin: 15px">{{ room.roomType | titlecase }}</td>
+          <td style="padding: 12px; margin: 15px">{{ room.amenities | lowercase}}</td>
+          <td style="padding: 12px; margin: 15px">{{ room.price | currency:'INR'}}</td>
+          <td style="padding: 12px; margin: 15px">{{ room.checkIn | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
