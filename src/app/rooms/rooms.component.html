@@ -44,7 +44,7 @@
        <td>{{e ? "Even":"Odd"}}</td>
         <td>{{ room.roomType | titlecase }}</td>
         <td>{{ room.amenities | lowercase}}</td>
-        <td>{{ room.price }}</td>
+        <td>{{ room.price | currency:'INR'}}</td>
         <td>{{ room.checkIn | date }}</td>
       </tr>
     </tbody>
