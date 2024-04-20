@@ -32,7 +32,7 @@ e: any;
     roomType:"Suite",
     amenities:"Jacuzi",
     price:5000,
-    checkIn:new Date('23-04-2024')
+    checkIn:new Date()
   }]
 
 }
