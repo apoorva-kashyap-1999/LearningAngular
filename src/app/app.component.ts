@@ -6,11 +6,12 @@ import { RoomsComponent } from "./rooms/rooms.component";
     selector: 'app-root',
     // standalone: true,
     templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
+    // template: '<h1>Hello world</h1>',
+    styleUrl: './app.component.css',
     // imports: [RouterOutlet, RoomsComponent]
     //  imports: [RoomsComponent]
 })
 export class AppComponent {
   title = 'hotelInventoryApp';
-  loginRole = 'Users'
+  loginRole = 'Admin'
 }
