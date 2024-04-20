@@ -16,7 +16,11 @@ export class RoomsComponent implements OnInit {
   toggle(){
     this.hideRooms = !this.hideRooms;
   }
-
+  
+  selectRoom(room :RoomData){
+    console.log(room);
+  }
+  
   room : Room = {
       totalRooms: 20,
      availableRooms : 8,

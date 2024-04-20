@@ -1,18 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Room , RoomData } from '../rooms/rooms';
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Room, RoomData } from '../rooms/rooms';
+import { emit } from 'process';
 
 @Component({
   selector: 'app-rooms-list',
   templateUrl: './rooms-list.component.html',
-  styleUrl: './rooms-list.component.css'
+  styleUrl: './rooms-list.component.css',
 })
-export class RoomsListComponent implements OnInit{
+export class RoomsListComponent implements OnInit {
+  @Input() rooms: RoomData[] = [];
 
-  @Input() rooms:RoomData[]=[];
+  @Output() selectedRoom = new EventEmitter<RoomData>();
 
-constructor() {}
+  constructor() {}
 
-ngOnInit(): void {  }
+  ngOnInit(): void {}
 
+  selectRoom(room : RoomData){
+    this.selectedRoom.emit(room);
+  }
 }

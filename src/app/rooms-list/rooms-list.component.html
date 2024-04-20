@@ -10,6 +10,7 @@
           <th style="padding: 12px; margin: 15px">Amenities</th>
           <th style="padding: 12px; margin: 15px">Price</th>
           <th style="padding: 12px; margin: 15px">Check-In</th>
+          <th style="padding: 12px; margin: 15px">Selected room</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,9 @@
           <td style="padding: 12px; margin: 15px">{{ room.amenities | lowercase}}</td>
           <td style="padding: 12px; margin: 15px">{{ room.price | currency:'INR'}}</td>
           <td style="padding: 12px; margin: 15px">{{ room.checkIn | date }}</td>
+          <td>
+            <button class="btn btn-primary p-4 m-4" (click)="selectRoom(room)">Select room</button>
+          </td>
         </tr>
       </tbody>
     </table>
