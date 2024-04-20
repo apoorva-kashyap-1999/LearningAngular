@@ -1,0 +1,52 @@
+<!-- Interpolation: {{}} -->
+<h2>Welcome to {{ hotelName }}</h2>
+
+<!-- Property binding -->
+<div [hidden]="hideRooms">
+  <h3>No of rooms :</h3>
+  <h4 [innerText]="noOfRooms"></h4>
+</div>
+
+<!-- Event binding -->
+<button (click)="toggle()">Rooms</button>
+
+<!-- ngIf -->
+<div [ngStyle]="{ 'color': 'red'}" *ngIf="room.availableRooms > 0">
+  <h2>No. of rooms available - {{ room.availableRooms }}</h2>
+</div>
+
+<!-- optional chaining -->
+{{ room.bookedRooms < 13 ? "Many rooms available" : null }}
+
+<!-- <ol>
+   <li>{{roomsList[0]}}</li>
+   <li>{{roomsList[1]}}</li>
+</ol> -->
+
+<!-- ngFor -->
+<div>
+  <table style="padding: 2px; margin: 2px">
+    <thead>
+      <tr style="padding: 2px; margin: 5px">
+         <th>Index</th>
+         <th>Even/Odd</th>
+        <th>Room Type</th>
+        <th>Amenities</th>
+        <th>Price</th>
+        <th>Check-In</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+      [ngClass]="e ?'even' :'odd' "
+       *ngFor="let room of roomsList; let e=even; let o=odd; let i=index">
+       <td>{{i}}</td>
+       <td>{{e ? "Even":"Odd"}}</td>
+        <td>{{ room.roomType }}</td>
+        <td>{{ room.amenities }}</td>
+        <td>{{ room.price }}</td>
+        <td>{{ room.checkIn }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
