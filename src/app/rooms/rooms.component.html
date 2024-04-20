@@ -42,8 +42,8 @@
        *ngFor="let room of roomsList; let e=even; let o=odd; let i=index">
        <td>{{i}}</td>
        <td>{{e ? "Even":"Odd"}}</td>
-        <td>{{ room.roomType }}</td>
-        <td>{{ room.amenities }}</td>
+        <td>{{ room.roomType | titlecase }}</td>
+        <td>{{ room.amenities | lowercase}}</td>
         <td>{{ room.price }}</td>
         <td>{{ room.checkIn | date }}</td>
       </tr>
