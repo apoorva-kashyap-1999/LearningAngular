@@ -3,16 +3,16 @@
 
 <!-- Property binding -->
 <div [hidden]="hideRooms">
-  <h3>No of rooms :</h3>
-  <h4 [innerText]="noOfRooms"></h4>
+  <p>No of rooms :</p>
+  <p [innerText]="noOfRooms"></p>
 </div>
 
 <!-- Event binding -->
-<button (click)="toggle()">Rooms</button>
+<button style="padding: 5px; margin:5px;" (click)="showRooms()">{{hideRooms?'Show Rooms':'HideRooms'}}</button>
 
 <!-- ngIf -->
-<div [ngStyle]="{ 'color': 'red'}" *ngIf="room.availableRooms > 0">
-  <h2>No. of rooms available - {{ room.availableRooms }}</h2>
+<div [ngStyle]="{ color: 'red' }" *ngIf="room.availableRooms > 0">
+  <p>No. of rooms available - {{ room.availableRooms }}</p>
 </div>
 
 <!-- optional chaining -->
@@ -22,9 +22,42 @@
    <li>{{roomsList[0]}}</li>
    <li>{{roomsList[1]}}</li>
 </ol> -->
-<div style="padding: 20px; margin:2px; background: rgb(203, 224, 181);"
-*ngIf="selectRoom">{{ selectedRoom|json}}</div>
-<!-- using @input in rooms-list for rooms to be used as props -->
-<app-rooms-list [rooms]="roomsList" (selectedRoom)="selectRoom($event)"></app-rooms-list>
+<div
+  style="padding: 20px; margin: 2px; background: rgb(203, 224, 181)"
+  *ngIf="selectRoom"
+>
+  {{ selectedRoom | json }}
+</div>
 
-<div style="padding: 10px; margin: 10px; background-color: burlywood; text-decoration-color: black;">{{roomsList |json}}</div>
+
+<!-- using @input in rooms-list for rooms to be used as props -->
+<app-rooms-list
+  [title]="title"
+  [rooms]="roomsList"
+  (selectedRoom)="selectRoom($event)"
+></app-rooms-list>
+
+<div>
+  <button
+    style="padding: 5px; margin: 5px; background: #ea7b7b"
+    (click)="toggle()"
+  >Change Title</button
+  >
+</div>
+
+<div>
+  <button style="padding: 5px; margin: 5px" (click)="addRoom()">
+    Add Room
+  </button>
+</div>
+
+<div
+  style="
+    padding: 10px;
+    margin: 10px;
+    background-color: burlywood;
+    text-decoration-color: black;
+  "
+>
+  {{ roomsList | json }}
+</div>
