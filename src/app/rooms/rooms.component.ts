@@ -11,6 +11,7 @@ export class RoomsComponent implements OnInit {
   hotelName='Taj Hotel'
   noOfRooms=20
   hideRooms= false
+  selectedRoom = {}
   e: any;
 
   toggle(){
@@ -19,6 +20,7 @@ export class RoomsComponent implements OnInit {
   
   selectRoom(room :RoomData){
     console.log(room);
+    this.selectedRoom=room;
   }
   
   room : Room = {

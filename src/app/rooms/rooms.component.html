@@ -22,7 +22,8 @@
    <li>{{roomsList[0]}}</li>
    <li>{{roomsList[1]}}</li>
 </ol> -->
-
+<div style="padding: 20px; margin:2px; background: rgb(203, 224, 181);"
+*ngIf="selectRoom">{{ selectedRoom|json}}</div>
 <!-- using @input in rooms-list for rooms to be used as props -->
 <app-rooms-list [rooms]="roomsList" (selectedRoom)="selectRoom($event)"></app-rooms-list>
 
