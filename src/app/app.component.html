@@ -1,10 +1,18 @@
 <h1>Hello Angular</h1>
 
 <!-- <app-rooms></app-rooms>  -->
-<div><h3>Role - {{loginRole}}</h3></div>
+
+<!-- <div><h3>Role - {{loginRole}}</h3></div>
 <div [ngSwitch]="loginRole">
   <div *ngSwitchCase="'Admin'"><app-rooms></app-rooms></div>
   <div *ngSwitchCase="'User'">Hello User</div>
   <div *ngSwitchDefault>Not Authorized</div>
-</div>
+</div> -->
 
+<!-- 
+//dynamically render app-rooms -->
+
+<!-- ng-template itself never renders anything -->
+<div>
+  <ng-template #user> </ng-template>
+</div>

@@ -1,17 +1,57 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Room, RoomData } from './rooms';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css',
 })
-export class RoomsComponent implements OnInit, DoCheck {
+export class RoomsComponent
+  implements OnInit, DoCheck, AfterViewInit, AfterViewChecked
+{
   constructor() {}
-  ngDoCheck(): void {
-    console.log('On check called')
+
+  ngOnInit(): void {
+    console.log('HeaderComponent', this.headerComponent);
+    this.roomsList = [
+      {
+        roomType: 'Deluxe',
+        amenities: 'AC',
+        price: 2000,
+        checkIn: new Date(),
+      },
+      {
+        roomType: 'Suite',
+        amenities: 'Jacuzi',
+        price: 5000,
+        checkIn: new Date(),
+      },
+    ];
   }
 
+  ngAfterViewInit(): void {
+    console.log('after view init', this.headerComponent);
+    this.headerComponent.title = 'Rooms View';
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('after view checked');
+  }
+
+  ngDoCheck(): void {
+    console.log('On check called');
+  }
+
+  // By adding ! after the property type (HeaderComponent), you're telling TypeScript that this property will be initialized by Angular through @ViewChild and will not be null or undefined. This should resolve the TypeScript error.
+  @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
   hotelName = 'Taj Hotel';
   noOfRooms = 20;
   hideRooms = false;
@@ -49,22 +89,4 @@ export class RoomsComponent implements OnInit, DoCheck {
     bookedRooms: 12,
   };
   roomsList: RoomData[] = [];
-
-  ngOnInit(): void {
-    this.roomsList = [
-      {
-        roomType: 'Deluxe',
-        amenities: 'AC',
-        price: 2000,
-        checkIn: new Date(),
-      },
-      {
-        roomType: 'Suite',
-        amenities: 'Jacuzi',
-        price: 5000,
-        checkIn: new Date(),
-      },
-    ];
-  }
-
 }
