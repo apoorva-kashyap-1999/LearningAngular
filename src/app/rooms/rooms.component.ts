@@ -62,12 +62,17 @@ export class RoomsComponent
   hotelName = 'Taj Hotel';
   noOfRooms = 20;
   hideRooms = false;
+  hideRoomList = true;
   selectedRoom = {};
   title = 'Rooms-List';
   e: any;
 
   toggle() {
     this.title = 'Find Rooms';
+  }
+
+  toggletable() {
+    this.hideRoomList = !this.hideRoomList;
   }
 
   showRooms() {

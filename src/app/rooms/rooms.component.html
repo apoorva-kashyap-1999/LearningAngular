@@ -10,7 +10,9 @@
 </div>
 
 <!-- Event binding -->
-<button style="padding: 5px; margin:5px;" (click)="showRooms()">{{hideRooms?'Show Rooms':'HideRooms'}}</button>
+<button style="padding: 5px; margin: 5px" (click)="showRooms()">
+  {{ hideRooms ? "Show Rooms" : "HideRooms" }}
+</button>
 
 <!-- ngIf -->
 <div [ngStyle]="{ color: 'red' }" *ngIf="room.availableRooms > 0">
@@ -31,20 +33,29 @@
   {{ selectedRoom | json }}
 </div>
 
-
 <!-- using @input in rooms-list for rooms to be used as props -->
-<app-rooms-list
-  [title]="title"
-  [rooms]="roomsList"
-  (selectedRoom)="selectRoom($event)"
-></app-rooms-list>
+<div *ngIf="hideRoomList">
+  <app-rooms-list
+    [title]="title"
+    [rooms]="roomsList"
+    (selectedRoom)="selectRoom($event)"
+  ></app-rooms-list>
+</div>
+
+<button
+  style="padding: 5px; margin: 5px; background: #ea7b7b"
+  (click)="toggletable()"
+>
+  Toggle table
+</button>
 
 <div>
   <button
     style="padding: 5px; margin: 5px; background: #ea7b7b"
     (click)="toggle()"
-  >Change Title</button
   >
+    Change Title
+  </button>
 </div>
 
 <div>
