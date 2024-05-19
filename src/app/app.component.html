@@ -1,9 +1,17 @@
 <h1>Hello Angular</h1>
 
-<app-rooms></app-rooms> 
+<!-- <app-rooms></app-rooms>  -->
 
-<div #name style="padding: 10px; margin: 10px; background: #361515; color: aliceblue;"></div>
+<div
+  #name
+  style="padding: 10px; margin: 10px; background: #361515; color: aliceblue"
+></div>
 
+<app-container>
+  <app-employee></app-employee>
+  <h1>This is from ng content</h1>
+  <app-rooms></app-rooms
+></app-container>
 
 <!-- <div><h3>Role - {{loginRole}}</h3></div>
 <div [ngSwitch]="loginRole">

@@ -41,7 +41,7 @@ export class RoomsComponent
 
   ngAfterViewInit(): void {
     // console.log('after view init', this.headerComponent);
-    console.log('after view init', this.headerComponents.last);
+    // console.log('after view init', this.headerComponents.last);
     this.headerComponent.title = 'Rooms View';
     // this.headerComponents.last.title = 'Last View';
   }
