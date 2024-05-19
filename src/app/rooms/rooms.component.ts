@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { Room, RoomData } from './rooms';
 import { HeaderComponent } from '../header/header.component';
+import { RoomsService } from './services/rooms.service';
 
 @Component({
   selector: 'app-rooms',
@@ -19,24 +20,13 @@ import { HeaderComponent } from '../header/header.component';
 export class RoomsComponent
   implements OnInit, DoCheck, AfterViewInit, AfterViewChecked
 {
-  constructor() {}
+  //using dependency injection approach
+  constructor(private roomService: RoomsService) {}
 
   ngOnInit(): void {
-    console.log('HeaderComponent', this.headerComponent);
-    this.roomsList = [
-      {
-        roomType: 'Deluxe',
-        amenities: 'AC',
-        price: 2000,
-        checkIn: new Date(),
-      },
-      {
-        roomType: 'Suite',
-        amenities: 'Jacuzi',
-        price: 5000,
-        checkIn: new Date(),
-      },
-    ];
+    // console.log('HeaderComponent', this.headerComponent);
+    //using dependency injection approach
+    this.roomsList = this.roomService.roomsList;
   }
 
   ngAfterViewInit(): void {
