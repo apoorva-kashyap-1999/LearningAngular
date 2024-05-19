@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   OnInit,
   ViewChild,
   ViewContainerRef,
@@ -17,15 +18,23 @@ import { RoomsComponent } from './rooms/rooms.component';
   // imports: [RouterOutlet, RoomsComponent]
   //  imports: [RoomsComponent]
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit
+// AfterViewInit
+ {
   title = 'hotelInventoryApp';
   loginRole = 'Admin';
 
-  // ViewContainerRef- helps in loading a component dynamically
-  @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+  // // ViewContainerRef- helps in loading a component dynamically
+  // @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-  ngAfterViewInit() {
-    console.log('on init in app');
-    const componentRef = this.vcr.createComponent(RoomsComponent);
+  // ngAfterViewInit() {
+  //   console.log('on init in app');
+  //   const componentRef = this.vcr.createComponent(RoomsComponent);
+  // }
+  ngOnInit(){
+    this.name.nativeElement.innerText = ' I am  div from view child ';
+    // console.log(this.name);
   }
+
+  @ViewChild('name', {static:true}) name!: ElementRef;
 }
