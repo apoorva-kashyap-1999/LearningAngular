@@ -4,7 +4,9 @@ import {
   Component,
   DoCheck,
   OnInit,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { Room, RoomData } from './rooms';
 import { HeaderComponent } from '../header/header.component';
@@ -38,8 +40,10 @@ export class RoomsComponent
   }
 
   ngAfterViewInit(): void {
-    console.log('after view init', this.headerComponent);
+    // console.log('after view init', this.headerComponent);
+    console.log('after view init', this.headerComponents.last);
     this.headerComponent.title = 'Rooms View';
+    // this.headerComponents.last.title = 'Last View';
   }
 
   ngAfterViewChecked(): void {
@@ -52,6 +56,9 @@ export class RoomsComponent
 
   // By adding ! after the property type (HeaderComponent), you're telling TypeScript that this property will be initialized by Angular through @ViewChild and will not be null or undefined. This should resolve the TypeScript error.
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
+
+  @ViewChildren(HeaderComponent) headerComponents!: QueryList<HeaderComponent>;
+
   hotelName = 'Taj Hotel';
   noOfRooms = 20;
   hideRooms = false;
